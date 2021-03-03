@@ -3,16 +3,23 @@
 
 {% block content %}
 
-<h1>Update Blog Post</h1>
+{% if user.is_authenticated %}
+    <h1>Update Blog Post</h1>
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-dark">Update</button>
-        
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-dark">Update</button>
+            
 
-    </form>
-</div>
+        </form>
+    </div>
+
+{% else %}
+    <h1>Access Denied</h1>
+    <p>You do not have the permissions to do this.</p>
+
+{% endif %}
 
 {% endblock %}
