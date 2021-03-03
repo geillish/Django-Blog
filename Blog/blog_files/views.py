@@ -9,7 +9,7 @@ class HomeView(ListView):
     model = Post
     paginate_by = 5
     template_name = 'index.html'
-    ordering = ['-id']
+    ordering = ['-date_posted']
 
 class PostDetailView(DetailView):
     model = Post

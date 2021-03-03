@@ -8,6 +8,9 @@
 (<a href="{% url 'update_post' post.pk %}">Edit</a>) -
 (<a href="{% url 'delete_post' post.pk %}">Delete</a>)</small>
 
+<br/>
+<small>Posted: {{ post.date_posted }}</small>
+
 <hr>
 <br/>
 
