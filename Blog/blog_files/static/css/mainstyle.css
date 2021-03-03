@@ -5,3 +5,7 @@
 .container li {
     margin-top: 10px;
 }
+
+.capitalise {
+    text-transform: capitalize;
+}
