@@ -11,29 +11,41 @@ class HomeView(ListView):
     template_name = 'index.html'
     ordering = ['-date_posted']
 
+    #Need to finish this so I can have it as a global function for all views so the code doesn't become wet.
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["category_menu"] = category_menu
+        return context
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'article_details.html'
+
 
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
 
+
 class AddCategoryView(CreateView):
     model = Category
     fields = '__all__'
     template_name = 'add_category.html'
+
 
 class UpdatePostView(UpdateView):
     model = Post
     form_class = UpdateForm
     template_name = 'update_post.html'
 
+
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
 
 #Showing I can use function based views aswell.
 def CategoryView(request, category):
