@@ -1,0 +1,11 @@
+<h1>Blog Posts</h1>
+
+<!-- This for loop will be used to print my blog posts -->
+<ul>
+{% for post in object_list %}
+
+    <li>{{ post.title }} - {{ post.author }}<br/>
+    {{ post.body }}</li>
+
+{% endfor %}
+</ul>
