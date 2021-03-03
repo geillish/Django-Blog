@@ -37,10 +37,10 @@ class DeletePostView(DeleteView):
 
 #Showing I can use function based views aswell.
 def CategoryView(request, category):
-    category_posts = Post.objects.filter(category=category)
+    category_posts = Post.objects.filter(category=category.replace('-', ' '))
     category_paginator = Paginator(category_posts, 5)
 
     page_num = request.GET.get('page')
     page = category_paginator.get_page(page_num)
     
-    return render(request, 'categories.html', {'page':page, 'category':category, 'category_posts':category_posts})
+    return render(request, 'categories.html', {'page':page, 'category':category.title().replace('-',' '), 'category_posts':category_posts})
