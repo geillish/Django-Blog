@@ -9,7 +9,8 @@
 (<a href="{% url 'delete_post' post.pk %}">Delete</a>)</small>
 
 <br/>
-<small>Posted: {{ post.date_posted }}</small>
+{% load tz %}
+<small>Posted: {{ post.date_posted|localtime }}</small>
 
 <hr>
 <br/>
