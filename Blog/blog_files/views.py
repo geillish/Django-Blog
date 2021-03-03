@@ -34,3 +34,13 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+#Showing I can use function based views aswell.
+def CategoryView(request, category):
+    category_posts = Post.objects.filter(category=category)
+    category_paginator = Paginator(category_posts, 5)
+
+    page_num = request.GET.get('page')
+    page = category_paginator.get_page(page_num)
+    
+    return render(request, 'categories.html', {'page':page, 'category':category, 'category_posts':category_posts})
