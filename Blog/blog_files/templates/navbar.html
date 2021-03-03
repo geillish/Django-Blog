@@ -40,9 +40,15 @@
                 {% for category in category_menu %}
                   <li><a class="dropdown-item" href="{% url 'category' category|slugify %}">{{ category|capfirst }}</a></li>
                 {% endfor %}
-                
+
               </ul>
             </li>
+          
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'category-list' %}">Categories</a>
+            </li>
+          
           {% endif %}
 
         </ul>

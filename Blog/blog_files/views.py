@@ -56,3 +56,7 @@ def CategoryView(request, category):
     page = category_paginator.get_page(page_num)
     
     return render(request, 'categories.html', {'page':page, 'category':category.title().replace('-',' '), 'category_posts':category_posts})
+
+def CategoryListView(request):
+    category_menu_list = Category.objects.all()
+    return render(request, 'categories_list.html', {'category_menu_list':category_menu_list})
