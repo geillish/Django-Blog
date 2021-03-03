@@ -2,6 +2,10 @@ from django import forms
 from .models import Post, Category
 
 category_choices = Category.objects.all().values_list('name','name')
+category_list = []
+
+for category in category_choices:
+    category_list.append(category)
 
 class PostForm(forms.ModelForm):
     class Meta:
